@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KD&TH</title>
+</head>
+<body>
+    <h1>Main</h1>
+    {% if template_variable == "KD" %}
+    <p>{{ template_variable }}, Detector!</p>
+    {% endif %}
+
+    {% if template_num < 20 %}
+    <p>{{ template_num }}은 20보다 작다.</p> 
+    {% elif template_num > 20 %}
+    <p>{{ template_num }}은 20보다 크다.</p> 
+    {% else %}
+    <p>{{ template_num }}은 20이다.</p> 
+    {% endif %}
+
+    <ul>
+        {% for x in range(10) %}
+            <li>{{ x }}</li>
+        {% endfor%}
+    </ul>
+
+    <ul>
+        {% for key, value in template_dict | dictsort %}
+            <li>{{ key }} : {{ value  }}</li>
+        {% endfor%}
+    </ul>
+    {% extends "base.html"  %}
+    {% block content %}
+        <p>자식문서에 포함될 내용</p>
+    {% endblock %}
+</body>
+</html>
