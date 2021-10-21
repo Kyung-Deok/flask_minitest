@@ -11,5 +11,4 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField("비밀번호 확인", 
                             validators=[DataRequired(), EqualTo("password")] )
     submit = SubmitField("가입")
-
     
