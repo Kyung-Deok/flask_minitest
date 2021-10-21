@@ -1,30 +1,25 @@
 
+from os import name
 from flask import Flask, request, render_template
-from flask_mongoengine import MongoEngine
+from pymongo import MongoClient
+from form import RegistrationForm
 
-# app = Flask(__name__)
-DB_URI = 'mongodb+srv://leekd:0914@test1.sqi24.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-# app.config['MONGODB_HOST'] = DB_URI
-# mongo = mongoengine(app)
+DB_URI = 'mongodb+srv://leekd:0914@cluster0.xbwiu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+client= MongoClient(DB_URI)
+__
+#db 생성
+db = client['miniproj']
+#collection 생성
+user_col = db['user_col']
 
-# if __name__ == '__main__':
-#     app.run()
+user_schema = {
+    "ID" : "aa",
+    "PASSWORD" : "bb",
+    "EMAIL" : "cc"
+}
 
-# from flask_pymongo import PyMongo
-# app = Flask(__name__)
-# app.config["MONGO_URI"] = DB_URI
-# mongo = PyMongo(app)
+# # test document 생성
+# testdoc = {"id":"testid", "email":"testemail", "password":"testpasswrd"}
 
-app = Flask(__name__)
-class TestConfig():
-    DEBUG = True
-    MONGODB_SETTINGS = {
-        'db': 'product',
-        'host': DB_URI
-    }
-
-if __name__ == '__main__':
-    app.config.from_object(TestConfig)
-    db = MongoEngine()
-    db.init_app(app)
-    app.run(host='localhost', port=3000)
+# test = user_col.insert_one(testdoc)
+print(form)
