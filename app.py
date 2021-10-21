@@ -2,7 +2,8 @@ from flask import Flask, render_template, url_for, flash, redirect
 from form import RegistrationForm
 
 app =Flask(__name__);
-# app.config["SELECT_KEY"] = '09140914'
+app.config["SECRET_KEY"] = 'd2707fea9778e085491e2dbbc73ff30e'
+
 
 
 @app.route("/")
